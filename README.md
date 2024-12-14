@@ -1,44 +1,66 @@
-<p align="center">
-  <a href="https://builderbot.vercel.app/">
-    <picture>
-      <img src="https://builderbot.vercel.app/assets/thumbnail-vector.png" height="80">
-    </picture>
-    <h2 align="center">BuilderBot</h2>
-  </a>
-</p>
+# Proyecto Whatsapp LLM BOT
 
+Este proyecto es un bot básico para WhatsApp que integra OpenAI para generar una mejor experiencia de usuario.
 
+## Descripción
 
-<p align="center">
-  <a aria-label="NPM version" href="https://www.npmjs.com/package/@builderbot/bot">
-    <img alt="" src="https://img.shields.io/npm/v/@builderbot/bot?color=%2300c200&label=%40bot-whatsapp">
-  </a>
-  <a aria-label="Join the community on GitHub" href="https://link.codigoencasa.com/DISCORD">
-    <img alt="" src="https://img.shields.io/discord/915193197645402142?logo=discord">
-  </a>
-</p>
+El bot está construido utilizando TypeScript y la librería Baileys para interactuar con la API de WhatsApp. Además, se integra con OpenAI para proporcionar respuestas inteligentes y mejorar la interacción con los usuarios.
 
+## Características
 
-## Getting Started
+- Envío y recepción de mensajes de WhatsApp.
+- Integración con OpenAI para generar respuestas automáticas.
+- Uso de orquestadores y flujos personalizados
+- Almacenamiento de datos en un archivo JSON utilizando `JsonFileDB`.
 
-With this library, you can build automated conversation flows agnostic to the WhatsApp provider, set up automated responses for frequently asked questions, receive and respond to messages automatically, and track interactions with customers. Additionally, you can easily set up triggers to expand functionalities limitlessly.
+## Requisitos
 
+- Node.js 20.0
+- Una cuenta de OpenAI con una clave API válida.
+- Una cuenta de WhatsApp.
+
+## Instalación
+
+NOTA: DEBES DE USAR pnpm y Node en su version 20
+
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/tu-usuario/base-ts-baileys-memory.git
 ```
-npm create builderbot@latest
+
+2. Navega al directorio del proyecto:
+
+```bash
+cd base-ts-baileys-memory
 ```
 
+3. Instala las dependencias:
 
-## Documentation
+```bash
+pnpm install
+```
 
-Visit [builderbot](https://builderbot.vercel.app/) to view the full documentation.
+4. Crea un archivo `.env` en la raíz del proyecto y agrega tu clave API de OpenAI:
 
+```dotenv
+OPENAI_API_KEY=tu-clave-api
+OPENAI_MODEL="gpt-4o-mini"
+PORT=3008
+```
 
-## Official Course
+## Uso
 
-If you want to discover all the functions and features offered by the library you can take the course.
-[View Course](https://app.codigoencasa.com/courses/builderbot?refCode=LEIFER)
+Para iniciar el bot, ejecuta el siguiente comando:
 
+```bash
+pnpm start
+```
 
-## Contact Us
-- [💻 Discord](https://link.codigoencasa.com/DISCORD)
-- [👌 𝕏 (Twitter)](https://twitter.com/leifermendez)
+## Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
