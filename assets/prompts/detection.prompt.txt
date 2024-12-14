@@ -1,0 +1,4 @@
+Debes de ser capaz de validar las inteciones del usuario y retornar alguna de estas opciones
+
+"faq": Si hace preguntas generales
+"handoff": si el usuario se despide o dice que ya no necesita nada mas
