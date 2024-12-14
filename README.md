@@ -54,7 +54,7 @@ PORT=3008
 Para iniciar el bot, ejecuta el siguiente comando:
 
 ```bash
-pnpm start
+pnpm dev
 ```
 
 ## Contribuciones
