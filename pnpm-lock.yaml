@@ -20,6 +20,9 @@ importers:
       '@builderbot/provider-baileys':
         specifier: 1.2.2
         version: 1.2.2(eslint@8.57.1)(typescript@5.7.2)
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       openai:
         specifier: ^4.76.3
         version: 4.76.3(zod@3.24.1)
@@ -474,7 +477,6 @@ packages:
 
   '@lancedb/vectordb-linux-x64-gnu@0.4.20':
     resolution: {integrity: sha512-pOqWjrRZQSrLTlQPkjidRii7NZDw8Xu9pN6ouVu2JAK8n81FXaPtFCyAI+Y3v9GpnYDN0rvD4eQ36aHAVPsa2g==}
-    cpu: [x64]
     os: [linux]
 
   '@lancedb/vectordb-win32-x64-msvc@0.4.20':
@@ -2857,7 +2859,6 @@ packages:
 
   vectordb@0.4.20:
     resolution: {integrity: sha512-A8X5uvNMl7btbKBshaOx0A6R6Q2eQqOE5Ifwu6r1fZALOS+V0rnoQmUKa1K1v31Vcr3S5GvQsFIl+v6yWataqA==}
-    cpu: [x64, arm64]
     os: [darwin, linux, win32]
     peerDependencies:
       '@apache-arrow/ts': ^14.0.2

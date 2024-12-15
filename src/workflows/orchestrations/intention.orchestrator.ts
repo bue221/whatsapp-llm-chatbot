@@ -4,7 +4,7 @@ import config from "~/config";
 import { readPromptFromFile } from "~/utils/promptUtils";
 import { faqFlow } from "~/workflows/flows/faq.flow";
 
-const promt = readPromptFromFile("intentionPrompt.txt");
+const promt = readPromptFromFile("detection.prompt.txt");
 
 export const intentionFlow = createFlowRouting
   .setKeyword(EVENTS.ACTION)
