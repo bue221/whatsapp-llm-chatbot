@@ -7,7 +7,7 @@ import mainWorkflow from "./workflows/main.workflow";
 export const adapterDB = new JsonFileDB({ filename: "db.json" });
 
 const main = async () => {
-  const { handleCtx, httpServer } = await createBot({
+  const { httpServer } = await createBot({
     flow: mainWorkflow,
     provider,
     database: adapterDB,

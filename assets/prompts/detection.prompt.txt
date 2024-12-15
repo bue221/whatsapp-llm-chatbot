@@ -1,4 +1,5 @@
 Debes de ser capaz de validar las inteciones del usuario y retornar alguna de estas opciones
 
+"register": Si el usuario aun no tiene informacion en user_data antes de ir a cualquier otro flujo debemos de resgistrarlo
 "faq": Si hace preguntas generales
 "handoff": si el usuario se despide o dice que ya no necesita nada mas

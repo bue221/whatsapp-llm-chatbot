@@ -9,7 +9,7 @@ const promt = readPromptFromFile("detection.prompt.txt");
 export const intentionFlow = createFlowRouting
   .setKeyword(EVENTS.ACTION)
   .setIntentions({
-    intentions: ["handoff", "faq", "NO_DETECTION"],
+    intentions: ["handoff", "faq", "regsiter", "NO_DETECTION"],
     description: promt,
   })
   .setAIModel({
@@ -38,7 +38,6 @@ export const intentionFlow = createFlowRouting
           return endFlow("Tu mensaje esta fuera de contexto");
         } catch (error) {
           console.error("INTENTION orcheschator error: ", error);
-          context.send("ERROR");
         }
       });
     },
