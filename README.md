@@ -49,6 +49,12 @@ OPENAI_MODEL="gpt-4o-mini"
 PORT=3008
 ```
 
+# A tomar en cuenta
+
+Segun la mini investigacion realizada y mi idea estare utilizando agentes de esta manera a los cuales les inyectare el state del bot para modificar el flujo
+
+https://colab.research.google.com/drive/1TtyikvTSXurZiTUElJ1_gbP9l4TLIqBC?usp=sharing
+
 ## Uso
 
 Para iniciar el bot, ejecuta el siguiente comando:
