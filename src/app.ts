@@ -1,12 +1,10 @@
 import { createBot } from "@builderbot/bot";
 import { JsonFileDB } from "@builderbot/database-json";
+import config from "~/config";
 import { provider } from "./provider";
 import mainWorkflow from "./workflows/main.workflow";
 
-export type IDatabase = typeof JsonFileDB;
 export const adapterDB = new JsonFileDB({ filename: "db.json" });
-
-const PORT = process.env.PORT ?? 3008;
 
 const main = async () => {
   const { handleCtx, httpServer } = await createBot({
@@ -15,7 +13,7 @@ const main = async () => {
     database: adapterDB,
   });
 
-  httpServer(+PORT);
+  httpServer(+config.port);
 };
 
 main();
