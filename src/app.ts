@@ -1,14 +1,69 @@
-import { createBot } from "@builderbot/bot";
-import { JsonFileDB } from "@builderbot/database-json";
+import { addKeyword, createBot, createFlow, EVENTS, MemoryDB } from '@builderbot/bot';
+import fetch from 'node-fetch';
 import config from "~/config";
 import { provider } from "./provider";
-import mainWorkflow from "./workflows/main.workflow";
+import { createMessageQueue, QueueConfig } from './utils/fast_entries';
 
-export const adapterDB = new JsonFileDB({ filename: "db.json" });
+
+
+const queueConfig: QueueConfig = { gapMilliseconds: 5000 };
+const enqueueMessage = createMessageQueue(queueConfig);
+
+
+const welcomeFlow = addKeyword<any, MemoryDB>(EVENTS.WELCOME)
+  .addAction(async (ctx, { flowDynamic }) => {
+    try {
+      enqueueMessage(ctx, async (body) => {
+        try {
+          console.log('Intentando conectar a:', 'http://127.0.0.1:8000/chat');
+          console.log('Datos enviados:', {
+            phone_number: "+" + ctx.from,
+            message: body
+          });
+          
+          const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              phone_number: "+" + ctx.from,
+              message: body
+            })
+          };
+
+          console.log('Enviando petición:', requestOptions);
+          
+          const response = await fetch('http://127.0.0.1:8000/chat', requestOptions);
+          console.log('Respuesta recibida:', response.status, response.statusText);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log('Datos recibidos:', data);
+          await flowDynamic(data.response);
+        } catch (error) {
+          console.error('Error detallado:', {
+            name: error.name,
+            message: error.message,
+            stack: error.stack,
+            phone: ctx.from,
+            message_2: body
+          });
+          await flowDynamic('Lo siento, ha ocurrido un error al procesar tu mensaje. Por favor, intenta nuevamente más tarde.');
+        }
+      });
+    } catch (error) {
+      console.error('Error processing message:', error);
+    }
+  });
+
 
 const main = async () => {
+  const adapterDB = new MemoryDB()
+  const adapterFlow = createFlow([welcomeFlow])
   const { httpServer } = await createBot({
-    flow: mainWorkflow,
+    flow: adapterFlow,
     provider,
     database: adapterDB,
   });
@@ -17,3 +72,8 @@ const main = async () => {
 };
 
 main();
+
+
+
+
+
