@@ -26,8 +26,7 @@ const welcomeFlow = addKeyword<any, MemoryDB>(EVENTS.WELCOME)
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              message: body,
-              // original_message: ctx,
+              messages: [body],
               phone_number: "+" + ctx.from,
             })
           };
