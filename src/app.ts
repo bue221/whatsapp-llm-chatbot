@@ -8,6 +8,7 @@ import { createMessageQueue, QueueConfig } from './utils/fast_entries';
 
 const queueConfig: QueueConfig = { gapMilliseconds: 5000 };
 const enqueueMessage = createMessageQueue(queueConfig);
+const BASE_URL = "http://127.0.0.1:8000";
 
 
 const welcomeFlow = addKeyword<any, MemoryDB>(EVENTS.WELCOME)
@@ -15,7 +16,7 @@ const welcomeFlow = addKeyword<any, MemoryDB>(EVENTS.WELCOME)
     try {
       enqueueMessage(ctx, async (body) => {
         try {
-          console.log('Intentando conectar a:', 'http://127.0.0.1:8000/chat');
+          console.log('Intentando conectar a:', BASE_URL + '/chat');
           console.log('Datos enviados:', {
             phone_number: "+" + ctx.from,
             message: body
@@ -25,14 +26,15 @@ const welcomeFlow = addKeyword<any, MemoryDB>(EVENTS.WELCOME)
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              message: body,
+              // original_message: ctx,
               phone_number: "+" + ctx.from,
-              message: body
             })
           };
 
           console.log('Enviando petición:', requestOptions);
           
-          const response = await fetch('http://127.0.0.1:8000/chat', requestOptions);
+          const response = await fetch(BASE_URL + '/chat', requestOptions);
           console.log('Respuesta recibida:', response.status, response.statusText);
 
           if (!response.ok) {
