@@ -8,7 +8,7 @@ import { createMessageQueue, QueueConfig } from './utils/fast_entries';
 
 const queueConfig: QueueConfig = { gapMilliseconds: 5000 };
 const enqueueMessage = createMessageQueue(queueConfig);
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "http://localhost:8000";
 
 
 const welcomeFlow = addKeyword<any, MemoryDB>(EVENTS.WELCOME)
