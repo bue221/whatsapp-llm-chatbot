@@ -16,7 +16,7 @@ export const registerFlow = addKeyword(EVENTS.ACTION).addAction(
             phone: context.from,
           },
         },
-        [customTool]
+        // [customTool]
       );
 
       const last_message =
